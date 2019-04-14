@@ -1,0 +1,9 @@
+GIVEN
+Lights: on, off
+Temperature: low, medium, high
+WHEN
+Action: open window, open door
+Time: day, night
+THEN
+New lights
+New temperature
