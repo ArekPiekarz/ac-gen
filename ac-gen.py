@@ -4,6 +4,7 @@ import argparse
 import csv
 import os
 import subprocess
+from collections import deque
 from copy import deepcopy
 from pathlib import Path
 
@@ -87,7 +88,7 @@ def addEmptyFields(properties, row):
 
 
 def generateGherkinHeaders(template):
-    row = ['GIVEN']
+    row = ['', 'GIVEN']
     addEmptyFields(template.preconditions, row)
     row.append('WHEN')
     addEmptyFields(template.triggers, row)
@@ -96,7 +97,7 @@ def generateGherkinHeaders(template):
 
 
 def generatePropertyHeaders(template):
-    row = []
+    row = ['#AC']
     for precondition in template.preconditions:
         row.append(precondition.name)
     for trigger in template.triggers:
@@ -135,7 +136,9 @@ def generateValuesFor(propertyIndex, row, rows, properties):
 def generateValues(template):
     properties = convertToProperties(template)
     rows = []
-    generateValuesFor(propertyIndex=0, row=[], rows=rows, properties=properties)
+    generateValuesFor(propertyIndex=0, row=deque(), rows=rows, properties=properties)
+    for acNumber, row in enumerate(rows):
+        row.appendleft(acNumber+1)
     return rows
 
 
