@@ -15,10 +15,11 @@ New lights
 New temperature
 ```
 
-Then use it to generate a table of combinations of scenarios:
+Then use it to generate a table of combinations of scenarios:  
 `python3 ac-gen.py --input=inputTemplate --output=generated-acs.csv`
 
 Output from CSV, postconditions are yours to fill:
+
 |     | GIVEN  |             | WHEN        |       | THEN       |                 | 
 |-----|--------|-------------|-------------|-------|------------|-----------------| 
 | #AC | Lights | Temperature | Action      | Time  | New lights | New temperature | 
@@ -48,10 +49,10 @@ Output from CSV, postconditions are yours to fill:
 | 24  | off    | high        | open door   | night |            |                 | 
 
 
-You can also automatically open the output in LibreOffice Calc:
+You can also automatically open the output in LibreOffice Calc:  
 `python3 ac-gen.py --input=inputTemplate --output=generated-acs.csv --open-output`
 
-To choose Python automatically, perform:
-`chmod +x ac-gen.py`
-Now you can invoke the script with just:
+To choose Python automatically, perform:  
+`chmod +x ac-gen.py`  
+Now you can invoke the script with just:  
 `./ac-gen.py --input=inputTemplate --output=generated-acs.csv`
